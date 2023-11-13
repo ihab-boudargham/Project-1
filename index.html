@@ -4,32 +4,22 @@
     <p class="li"nk rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <script src="https://kit.fontawesome.com/61ebb60581.js" crossorigin="anonymous"></script>
     <title>Your Personal Web Page</title>
-    <!-- session final-3 -->
-    <!-- Task: reset main styles on all elements -->
-    <!-- Hint: set box-sizing to border-box, margin and padding to zeros -->
-   
-    <!-- session final-3 -->
-    <!-- Task:
-      - set the bg color of the body to white using hex
-      - style the header element to have color of hex 'f2f2f2', padding of 20 pixels, and center its text
-      - style the element with class 'h1' to have no margin, and a font size of 24 pixels
-    -->
-    <style>
 
+    <style>
         *{
-                margin:0;
-                padding:0;
-                box-sizing: border-box;
-            }
+            margin: 5px;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            background-color: white;
+            background-color: rgb(128, 126, 126);
         }
 
         .header {
-             color: #f2f2f2;
-             padding: 20px;
-             text-align: center;
+            color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
         }
 
         .h1 {
@@ -38,21 +28,21 @@
         }
 
         .nav .ul {
-        list -style: none;
-        padding: 0;
-        margin: 20px 0;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
+            list-style: none;
+            padding: 0;
+            margin: 20px 0px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
         }
 
         .nav .ul .li {
             display: inline-block;
-            margin-left: 10px;
+            margin-right: 10px;
         }
 
-        .nav .ul .li {
+        .nav .ul a {
             text-decoration: none;
             color: #333;
             padding: 5px 10px;
@@ -71,8 +61,10 @@
             justify-content: space-around;
             gap: 10px;
         }
-        
-        .portfolio__row > *, .stats__row > *, .blogs__row > * {
+
+        .portfolio__row > *,
+        .stats__row > *, 
+        .blogs__row > * {
             width: 450px;
             text-align: center;
         }
@@ -82,13 +74,11 @@
             flex-direction: column;
             gap: 10px;
             align-items: center;
-
         }
 
         .section {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            padding: 20px;
+            width: 100%;
             background-color: #f5f5f5;
             border-radius: 5px;
         }
@@ -99,24 +89,56 @@
         }
 
         p {
-            font-size: 10px;
-            margin-bottom: 10px;
+            font-size: 16px;
+            padding-bottom: 10px;
         }
 
         .work, .blog {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-
+          display: flex;
+          flex-direction: column;
+          justify-items: cenetr;
+          margin-bottom: 20px;
         }
 
+        .work img,
+        .blog img {
+          width: 100%;
+          height: auto;
+          border-radius: 5px;
+          margin-bottom: 10px;
+        }
 
+        .work__description {
+            text-align: center;
+        }
 
+        .work__description .h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
 
+        .work__description p {
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .social-media {
+          font-size: 20px;
+        }
 
     </style>
-    
+
+    <!-- session final-3 -->
+    <!-- Task: reset main styles on all elements -->
+    <!-- Hint: set box-sizing to border-box, margin and padding to zeros -->
+   
+    <!-- session final-3 -->
+    <!-- Task:
+      - set the bg color of the body to white using hex
+      - style the header element to have color of hex 'f2f2f2', padding of 20 pixels, and center its text
+      - style the element with class 'h1' to have no margin, and a font size of 24 pixels
+    -->
+   
     <!-- session final-3 -->
     <!-- Task:
       - style the ul inside the nav to have no list style, no padding, a margin of 20 pixels vertically and no margin horizontally. Also set the display property to flex, allow wrapping, center the content and the text
@@ -124,8 +146,6 @@
       - style the anchor tag inside the list items inside of the ul, inside of the nav, to have no text decoration, a hex color '333', and vertical padding of 5 pixels, and horizontal padding of 10 pixels
       - style all the elements that are the immediate child of the element with class 'portfolio__row', to have width of 400 pixels
     -->
-
-
     <!-- session final-3 -->
     <!-- Task:
       - style elements with classes 'portfolio__row', 'stats__row', and 'blogs__row' to have display set to flex. Also allow wrapping, center items vertically, and distribute the items with equal space around. Also set a minimum gap of 10 pixels
@@ -192,7 +212,6 @@
     -->
   </head>
   <body>
-
     <!-- session final-3 -->
     <!-- Task: use semantic HTML for element with class 'header' -->
     <div class="header">
@@ -252,7 +271,7 @@
         <p class="h2">Portfolio</p>
         <div class="portfolio__row">
           <div class="work">
-            <img src="images/chris-meads-Uy9Bh-kmt3s-unsplash.jpg" alt="Work 1" />
+            <img src="images\download.jpg" alt="Work 1" />
             <div class="work__description">
               <p class="h3">Work 1</p>
               <p>Provide a brief description or caption for this work.</p>
@@ -261,7 +280,7 @@
 
 
           <div class="work">
-            <img src="images/nils-leonhardt-DPQPY8541AY-unsplash.jpg" alt="Work 2" />
+            <img src="images\download.jpg" alt="Work 2" />
             <div class="work__description">
               <p class="h3">Work 2</p>
               <p>Provide a brief description or caption for this work.</p>
@@ -270,7 +289,7 @@
 
 
           <div class="work">
-            <img src="images/eric-welch-eRwWGWkh0vU-unsplash.jpg" alt="Work 3" />  
+            <img src="images\download.jpg" alt="Work 3" />
             <div class="work__description">
               <p class="h3">Work 3</p>
               <p>Provide a brief description or caption for this work.</p>
@@ -318,7 +337,7 @@
         <p class="h2">Blog</p>
         <div class="blogs__row">
           <div class="blog">
-            <img src="images/chris-meads-Uy9Bh-kmt3s-unsplash.jpg" alt="blog 1" />
+            <img src="images\download.jpg" alt="blog 1" />
             <div class="blog__description">
               <p class="h3">Blog 1</p>
               <p>Provide a brief description or caption for this blog.</p>
@@ -327,7 +346,7 @@
 
 
           <div class="blog">
-            <img src="images/nils-leonhardt-DPQPY8541AY-unsplash.jpg" alt="blog 2" />
+            <img src="images\download.jpg" alt="blog 2" />
             <div class="blog__description">
               <p class="h3">Blog 2</p>
               <p>Provide a brief description or caption for this blog.</p>
@@ -336,7 +355,7 @@
 
 
           <div class="blog">
-            <img src="images/eric-welch-eRwWGWkh0vU-unsplash.jpg" alt="blog 3" />
+            <img src="images\download.jpg" alt="blog 3" />
             <div class="blog__description">
               <p class="h3">Blog 3</p>
               <p>Provide a brief description or caption for this blog.</p>
