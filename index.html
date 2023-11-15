@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Header</title>
+    <title>Document</title>
 
     <style>
       *{
@@ -12,120 +12,138 @@
         padding: 0;
       }
 
-      header {
-        background-color: #333;
-        padding: 20px;
+      body {
+        height: 100vh;
         display: flex;
+      }
+
+      .card {
+        width: 300px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);;
+      }
+
+      .card--dark {
+        background-color: #333333;
+        box-shadow: red;
+      }
+
+      .card__header {
         justify-content: space-between;
-        align-items: center;
+        padding: 8px 16px;
       }
 
-      .logo {
-        color: white;
-        font-size: 24px;
+      .card__image {
+        width: 100%;
+        height: auto; /* prevent the image ffrom streching */
+        pointer-events: none; /* to prevent any interaction, usually used for decorative images */
+      }
+
+      .card__content {
+        padding: 16px;
+      }
+
+      .card__title {
+        font-size: 18px;
         font: bold;
+        margin-bottom: 8px;
+        position: relative;
       }
 
-      nav li {
-        display: flex;
-        list-style: none;
-        margin: 20px;
+      .card__title::after {
+        content: attr(title);
+        position: absolute;
+        width: 140px;
+        opacity: 0;
+        background-color: #333; /* Background color */
+        color: #fff; /* Text color */
+        padding: 8px; /* Padding for better visibility */
+        border-radius: 4px; /* Rounded corners */
+        font-size: 14px; /* Font size */
+        transition: opacity 0.3s ease; /* Smooth transition for opacity */
       }
 
-      nav a {
-        color: white;
+      .card__title:hover::after {
+          opacity: 1; /* Show the pseudo-element on hover */
+      }
+
+      .card__text {
+        font-size: 14;
+        color: #666666;
+        margin-bottom: 16px;
+      }
+
+      .card__price {
         font-size: 16px;
+        margin-top: 8px;
+        font-weight: bold;
       }
 
-      nav li:last-child a {
-        color: yellow;
-        text-transform: uppercase;
+      .card__button {
+        text-decoration: none;
+        background-color: #4c50;
+        padding: 8px 16px;
+        transition: background-color 0.3s ease;
+    
       }
 
-      @media (max-width: 600px) {
-        header {
-            flex-direction: column;
-            align-items: center; /* Optional: Center items horizontally */
-        }
+      .card__button:hover {
+        background-color: #45a049;
 
-        nav ul {
-            flex-direction: column;
-        }
-
-        nav li {
-            margin: 0 0 10px 0;
-        }
       }
 
-      /* Create the 'flicker' animation */
-      @keyframes flicker {
-          0%, 100% {
-              opacity: 0;
-          }
-          50% {
-              opacity: 1;
-          }
+      .card--dark {
+          color: #cccccc;
       }
 
-      /* Apply the animation to the element with class 'flicker-effect' */
-      .flicker-effect {
-          animation: flicker 1s infinite;
+      .card--dark .card__button {
+          background-color: #1e824c;
       }
+
+      .card--dark .card__button:hover {
+          background-color: #1a6c3d;
+      }
+     
     </style>
       
-    
-
-    <!-- session final-2 -->
-    <!-- Task: reset styles -->
-    <!-- Hint: set box-sizing to border-box, margin and padding to zero -->
-
-    <!-- session final-2 -->
-    <!-- Task: style the header element -->
-    <!-- Hint: set bg color to hex '333', give the header a padding of 20 pixels, and set its display property to flex -->
-    <!-- Hint: space the elements based on distance between them, and make sure all elements are vertically centered on an axis -->
-    
-    <!-- session final-2 -->
-    <!-- Task: style the element with class 'logo' with white hex color, font size of 24 pixels, and a bold font -->
-
-    <!-- session final-2 -->
-    <!-- Task: style the unordered list inside nav element -->
-    <!-- Hint: set its display property to flex, and remove any list styles -->
-    
-    <!-- session final-2 -->
-    <!-- Task: style the list items inside nav element -->
-    <!-- Hint: set the margin to 20 pixels -->
-    
-    <!-- session final-2 -->
-    <!-- Task: style the anchor tag inside nav element -->
-    <!-- Hint: set the color to white, and the font size to 16 pixels -->
-    
-    <!-- session final-2 -->
-    <!-- Task: style the anchor tag inside the last list item -->
-    <!-- Hint: set the color to yellow, and use CSS to make all its letters display in uppercase -->
-    
-    <!-- session final-2 -->
-    <!-- Task: style the header for screens with width under 600 pixels -->
-    <!-- Hint: change the flex direction of the header element to column -->
-    <!-- Hint: change the flex direction of unordered list inside of the nav element to column -->
-    <!-- Hint: change the margins on the list item inside of the nav element, to have a margin of zero pixels on the left, and a margin of 10 pixels on the bottom -->
-    
-    <!-- session final-2 -->
-    <!-- Task: style the element with class 'flicker-effect' to have animation named 'flicker' over 1 second and with infinite iterations -->
-    
-    <!-- session final-2 -->
-    <!-- Task: create an animation named 'flicker' that switches the opacity from 0 to 1 -->
+    <!-- session final-1 -->
+    <!-- Task: add styles for card component with --dark modifier -->
+    <!-- Hint: text color should be hex 'cccccc' -->
+    <!-- Hint: .card__button bg color should be hex '1e824c' -->
+    <!-- Hint: .card__button:hover bg color should be hex '1a6c3d' -->
   </head>
   <body>
-    <header> 
-      <div class="logo">Logo</div> 
-      <nav> 
-        <ul> 
-          <li><a href="#">Home</a></li> 
-          <li><a href="#">About</a></li> 
-          <li><a href="#">Services</a></li> 
-          <li class="flicker-effect"><a href="#">Contact</a></li> 
-        </ul>
-      </nav> 
-    </header> 
-  </body>
+    <!-- session final-1 -->
+    <!-- Task: add a card element -->
+    <!-- Hint: structure of a card:  <div class="card"> <img /> <div> <h2 title="...">...</h2> <p>$...</p> <p>Description goes here...</p> <a>Read More</a> </div> </div> -->
+
+    <div class="card">
+      <img src="images/download.jpg" class="card__image" />
+      <div class="card__content">
+          <h2 class="card__title" title="Title Goes Here">Dog</h2>
+          <p class="card__price">$200</p>
+          <p class="card__text">Cute little puppy</p>
+          <a href="#" class="card__button">Read More</a>
+      </div>
+
+      <div class="card">
+        <img src="images/download.jpg" class="card__image" />
+        <div class="card__content">
+            <h2 class="card__title" title="Title Goes Here">Dog</h2>
+            <p class="card__price">$200</p>
+            <p class="card__text">Cute little puppy</p>
+            <a href="#" class="card__button">Read More</a>
+        </div>
+
+        <div class="card">
+          <img src="images/download.jpg" class="card__image" />
+          <div class="card__content">
+              <h2 class="card__title" title="Title Goes Here">Dog</h2>
+              <p class="card__price">$200</p>
+              <p class="card__text">Cute little puppy</p>
+              <a href="#" class="card__button">Read More</a>
+          </div>
+      
+</body>
 </html>
