@@ -1,149 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Card component</title>
     <style>
-      *{
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+        .card {
+            border: 2px solid red;
+            width: 500px;
+            height: 300px;
+            /* width and height for the border */
+            overflow: hidden;   
+              /* /let the img fit the border*  */ 
+            border-radius: 50px;
+            /* border radius the not3ag l border */
+            position:  relative;
+            /* pos rel for positioning must add */
+            
+        }
+        img {
+            width: 500px;
+            height: 300px;
+        }
+        .text {
+            left: 0px;
+            bottom: 0px;
+            position: absolute;
+            /* parent is a position relative */
+            /* where child is a position absolute */
+            color: red;
+            padding: 40px;
+        }
 
-      body {
-        height: 100vh;
-        display: flex;
-      }
-
-      .card {
-        width: 300px;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);;
-      }
-
-      .card--dark {
-        background-color: #333333;
-        box-shadow: red;
-      }
-
-      .card__header {
-        justify-content: space-between;
-        padding: 8px 16px;
-      }
-
-      .card__image {
-        width: 100%;
-        height: auto; /* prevent the image ffrom streching */
-        pointer-events: none; /* to prevent any interaction, usually used for decorative images */
-      }
-
-      .card__content {
-        padding: 16px;
-      }
-
-      .card__title {
-        font-size: 18px;
-        font: bold;
-        margin-bottom: 8px;
-        position: relative;
-      }
-
-      .card__title::after {
-        content: attr(title);
-        position: absolute;
-        width: 140px;
-        opacity: 0;
-        background-color: #333; /* Background color */
-        color: #fff; /* Text color */
-        padding: 8px; /* Padding for better visibility */
-        border-radius: 4px; /* Rounded corners */
-        font-size: 14px; /* Font size */
-        transition: opacity 0.3s ease; /* Smooth transition for opacity */
-      }
-
-      .card__title:hover::after {
-          opacity: 1; /* Show the pseudo-element on hover */
-      }
-
-      .card__text {
-        font-size: 14;
-        color: #666666;
-        margin-bottom: 16px;
-      }
-
-      .card__price {
-        font-size: 16px;
-        margin-top: 8px;
-        font-weight: bold;
-      }
-
-      .card__button {
-        text-decoration: none;
-        background-color: #4c50;
-        padding: 8px 16px;
-        transition: background-color 0.3s ease;
-    
-      }
-
-      .card__button:hover {
-        background-color: #45a049;
-
-      }
-
-      .card--dark {
-          color: #cccccc;
-      }
-
-      .card--dark .card__button {
-          background-color: #1e824c;
-      }
-
-      .card--dark .card__button:hover {
-          background-color: #1a6c3d;
-      }
-     
+        .cardsgrid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+           
+        }
     </style>
-      
-    <!-- session final-1 -->
-    <!-- Task: add styles for card component with --dark modifier -->
-    <!-- Hint: text color should be hex 'cccccc' -->
-    <!-- Hint: .card__button bg color should be hex '1e824c' -->
-    <!-- Hint: .card__button:hover bg color should be hex '1a6c3d' -->
-  </head>
-  <body>
-    <!-- session final-1 -->
-    <!-- Task: add a card element -->
-    <!-- Hint: structure of a card:  <div class="card"> <img /> <div> <h2 title="...">...</h2> <p>$...</p> <p>Description goes here...</p> <a>Read More</a> </div> </div> -->
+</head>
 
-    <div class="card">
-      <img src="images/download.jpg" class="card__image" />
-      <div class="card__content">
-          <h2 class="card__title" title="Title Goes Here">Dog</h2>
-          <p class="card__price">$200</p>
-          <p class="card__text">Cute little puppy</p>
-          <a href="#" class="card__button">Read More</a>
-      </div>
-
-      <div class="card">
-        <img src="images/download.jpg" class="card__image" />
-        <div class="card__content">
-            <h2 class="card__title" title="Title Goes Here">Dog</h2>
-            <p class="card__price">$200</p>
-            <p class="card__text">Cute little puppy</p>
-            <a href="#" class="card__button">Read More</a>
-        </div>
-
+<body>
+    <div class="cardsgrid">
         <div class="card">
-          <img src="images/download.jpg" class="card__image" />
-          <div class="card__content">
-              <h2 class="card__title" title="Title Goes Here">Dog</h2>
-              <p class="card__price">$200</p>
-              <p class="card__text">Cute little puppy</p>
-              <a href="#" class="card__button">Read More</a>
-          </div>
-      
+            <div>
+                <img src="images\download.jpg" alt="">
+            </div>
+            <div class="text">
+                <h1> Title of image</h1>
+                <button> View more</button>
+            </div>
+    
+    
+        </div>
+        <div class="card">
+            <div>
+                <img src="images\download.jpg" alt="">
+            </div>
+            <div class="text">
+                <h1> Title of image</h1>
+                <button> View more</button>
+            </div>
+    
+    
+        </div>
+        <div class="card">
+            <div>
+                <img src="images\download.jpg" alt="">
+            </div>
+            <div class="text">
+                <h1> Title of image</h1>
+                <button> View more</button>
+            </div>
+    
+    
+        </div>
+        <div class="card">
+            <div>
+                <img src="images\download.jpg" alt="">
+            </div>
+            <div class="text">
+                <h1> Title of image</h1>
+                <button> View more</button>
+            </div>
+    
+    
+        </div>
+        <div class="card">
+            <div>
+                <img src="images\download.jpg" alt="">
+            </div>
+            <div class="text">
+                <h1> Title of image</h1>
+                <button> View more</button>
+            </div>
+    
+    
+        </div>
+        <div class="card">
+            <div>
+                <img src="images\download.jpg" alt="">
+            </div>
+            <div class="text">
+                <h1> Title of image</h1>
+                <button> View more</button>
+            </div>
+    
+    
+        </div>
+    </div>
+    <!-- will create a card -->
+    
+    <!-- in this cardni have two layers -->
+    <!-- the back layer will be an image -->
+    <!-- the front layer will be overlay text element -->
+
+
 </body>
+
 </html>
