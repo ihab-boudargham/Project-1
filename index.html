@@ -1,123 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Card component</title>
     <style>
-        .card {
-            border: 2px solid red;
-            width: 500px;
-            height: 300px;
-            /* width and height for the border */
-            overflow: hidden;   
-              /* /let the img fit the border*  */ 
-            border-radius: 50px;
-            /* border radius the not3ag l border */
-            position:  relative;
-            /* pos rel for positioning must add */
-            
-        }
-        img {
-            width: 500px;
-            height: 300px;
-        }
-        .text {
-            left: 0px;
-            bottom: 0px;
-            position: absolute;
-            /* parent is a position relative */
-            /* where child is a position absolute */
-            color: red;
-            padding: 40px;
-        }
+      * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+      }
 
-        .cardsgrid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-           
-        }
+      body {
+          padding: 40px;
+      }
+
+      /* Card styles */
+      .card {
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .card__image {
+          width: 100%;
+          height: auto;
+          display: block;
+      }
+
+      .card__content {
+          padding: 16px;
+      }
+
+      .card__title {
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 8px;
+          position: relative;
+      }
+
+      .card__title::after {
+          content: attr(title);
+          position: absolute;
+          width: 140px;
+          opacity: 0;
+          background-color: #333;
+          color: #fff;
+          padding: 8px;
+          border-radius: 4px;
+          font-size: 14px;
+          transition: opacity 0.3s ease;
+      }
+
+      .card__title:hover::after {
+          opacity: 1;
+      }
+
+      .card__price {
+          font-size: 16px;
+          font-weight: bold;
+          margin-top: 8px;
+      }
+
+      .card__text {
+          font-size: 14px;
+          color: #666;
+          margin-bottom: 16px;
+      }
+
+      .card__button {
+          text-decoration: none;
+          background-color: #4caf50;
+          color: #fff;
+          padding: 8px 16px;
+          border-radius: 4px;
+          transition: background-color 0.3s ease;
+      }
+
+      .card__button:hover {
+          background-color: #45a049;
+      }
+
+      /* Styles for the element with ID 'cards-grid' */
+      #cards-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 20px;
+          justify-content: center;
+          align-content: center;
+      }
     </style>
-</head>
+    <!-- session final -->
+    <!-- Task: reset box-sizing, margin, and padding styles on all elements -->
+      
+    <!-- session final -->
+    <!-- Task: give the body of the page a padding of 40 pixels -->
 
-<body>
-    <div class="cardsgrid">
-        <div class="card">
-            <div>
-                <img src="images\download.jpg" alt="">
-            </div>
-            <div class="text">
-                <h1> Title of image</h1>
-                <button> View more</button>
-            </div>
-    
-    
-        </div>
-        <div class="card">
-            <div>
-                <img src="images\download.jpg" alt="">
-            </div>
-            <div class="text">
-                <h1> Title of image</h1>
-                <button> View more</button>
-            </div>
-    
-    
-        </div>
-        <div class="card">
-            <div>
-                <img src="images\download.jpg" alt="">
-            </div>
-            <div class="text">
-                <h1> Title of image</h1>
-                <button> View more</button>
-            </div>
-    
-    
-        </div>
-        <div class="card">
-            <div>
-                <img src="images\download.jpg" alt="">
-            </div>
-            <div class="text">
-                <h1> Title of image</h1>
-                <button> View more</button>
-            </div>
-    
-    
-        </div>
-        <div class="card">
-            <div>
-                <img src="images\download.jpg" alt="">
-            </div>
-            <div class="text">
-                <h1> Title of image</h1>
-                <button> View more</button>
-            </div>
-    
-    
-        </div>
-        <div class="card">
-            <div>
-                <img src="images\download.jpg" alt="">
-            </div>
-            <div class="text">
-                <h1> Title of image</h1>
-                <button> View more</button>
-            </div>
-    
-    
-        </div>
-    </div>
-    <!-- will create a card -->
-    
-    <!-- in this cardni have two layers -->
-    <!-- the back layer will be an image -->
-    <!-- the front layer will be overlay text element -->
+    <!-- session final -->
+    <!-- Task: copy the styles of card elements off the work of previous sessions -->
 
+    <!-- session final -->
+    <!-- Task: add styles for the element with ID 'cards-grid' -->
+    <!-- Hint: set display to grid, with columns template set to auto-fit with minmax 280px -> 1fr -->
+    <!-- Hint: add a gap of 20 pixels between the child elements -->
+    <!-- Hint: use justify-content: center; to center cards horizontally -->
+    <!-- Hint: use align-content: center; to center cards vertically -->
+  </head>
+  <body>
+    <div id="cards-grid"></div>
 
-</body>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          var cardsGrid = document.getElementById('cards-grid');
+          var numberOfCards = 20;
 
+          for (var i = 0; i < numberOfCards; i++) {
+              var card = document.createElement('div');
+              card.className = 'card';
+
+              card.innerHTML = `
+                  <img src="images/download.jpg" alt="Card Image" class="card__image" />
+                  <div class="card__content">
+                      <h2 class="card__title" title="Card Title">Card Title</h2>
+                      <p class="card__price">$...</p>
+                      <p class="card__text">Description goes here...</p>
+                      <a href="#" class="card__button">Read More</a>
+                  </div>
+              `;
+
+              cardsGrid.appendChild(card);
+          }
+      });
+  </script>
+    <!-- session final -->
+    <!-- Task: add a script with the logic to populate element corresponding to selector '#cards-grid' with 20 cards -->
+    <!-- Hint: you can use chatGPT if you don't know JavaScript yet
+      - get a reference of the container element '#cards-grid'
+      - run a loop for N times, N being the number of cards in this case, equal to 20
+      - in each iteration create a card, and append it to the container element
+      - a card should have the following structure: <div class="card"> <img /> <div> <h2 title="...">...</h2> <p>$...</p> <p>Description goes here...</p> <a>Read More</a> </div> </div>
+      - remeber to follow BEM convention when giving each element it's class
+    -->
+  </body>
 </html>
