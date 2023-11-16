@@ -15,23 +15,25 @@
       body {
         height: 100vh;
         display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .card {
         width: 300px;
+        height: 500px;
         border-radius: 8px;
         overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);;
-      }
-
-      .card--dark {
-        background-color: #333333;
-        box-shadow: red;
+        box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.9);
       }
 
       .card__header {
+        display: flex;
         justify-content: space-between;
-        padding: 8px 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-right: 16px;
+        padding-left: 16px;
       }
 
       .card__image {
@@ -56,12 +58,6 @@
         position: absolute;
         width: 140px;
         opacity: 0;
-        background-color: #333; /* Background color */
-        color: #fff; /* Text color */
-        padding: 8px; /* Padding for better visibility */
-        border-radius: 4px; /* Rounded corners */
-        font-size: 14px; /* Font size */
-        transition: opacity 0.3s ease; /* Smooth transition for opacity */
       }
 
       .card__title:hover::after {
@@ -75,14 +71,14 @@
       }
 
       .card__price {
-        font-size: 16px;
+        font-size: 14px;
         margin-top: 8px;
         font-weight: bold;
       }
 
       .card__button {
         text-decoration: none;
-        background-color: #4c50;
+        background-color: #4caf50;
         padding: 8px 16px;
         transition: background-color 0.3s ease;
     
@@ -94,11 +90,13 @@
       }
 
       .card--dark {
-          color: #cccccc;
+        background-color: #333333;
+        box-shadow: 1px 4px 8px red;
+        color: #cccccc;
       }
 
       .card--dark .card__button {
-          background-color: #1e824c;
+          background-color: #1e2a82;
       }
 
       .card--dark .card__button:hover {
@@ -118,32 +116,18 @@
     <!-- Task: add a card element -->
     <!-- Hint: structure of a card:  <div class="card"> <img /> <div> <h2 title="...">...</h2> <p>$...</p> <p>Description goes here...</p> <a>Read More</a> </div> </div> -->
 
-    <div class="card">
-      <img src="images/download.jpg" class="card__image" />
+
+    <div class="card card--dark">
+      <img src="images/download.jpg" alt="Image" class="card__image" />
+      <span class="card__header">
+        <h2 class="card__title" title="Lorem ipsum title">Card Title</h2>
+        <p class="card__price">$19.99 per month</p>
+      </span>
       <div class="card__content">
-          <h2 class="card__title" title="Title Goes Here">Dog</h2>
-          <p class="card__price">$200</p>
-          <p class="card__text">Cute little puppy</p>
-          <a href="#" class="card__button">Read More</a>
+        <p class="card__text">Lorem.</p>
+        <a href="#" class="card__button">Read More</a>
       </div>
+    </div>
 
-      <div class="card">
-        <img src="images/download.jpg" class="card__image" />
-        <div class="card__content">
-            <h2 class="card__title" title="Title Goes Here">Dog</h2>
-            <p class="card__price">$200</p>
-            <p class="card__text">Cute little puppy</p>
-            <a href="#" class="card__button">Read More</a>
-        </div>
-
-        <div class="card">
-          <img src="images/download.jpg" class="card__image" />
-          <div class="card__content">
-              <h2 class="card__title" title="Title Goes Here">Dog</h2>
-              <p class="card__price">$200</p>
-              <p class="card__text">Cute little puppy</p>
-              <a href="#" class="card__button">Read More</a>
-          </div>
-      
 </body>
 </html>
