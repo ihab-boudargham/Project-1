@@ -1,140 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
 
-    <style>
-      * {
-          box-sizing: border-box;  /* all calculations will be inside the box */
-          margin: 0;
-          padding: 0;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      /* all calculations will be inside the box */
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      padding: 40px;
+    }
+
+    .card {
+      width: 300px;
+      height: 500px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.9);
+    }
+
+    .card__header {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+
+    .card__image {
+      width: 100%;
+      height: auto;
+      /* prevent the image ffrom streching */
+      pointer-events: none;
+      /* to prevent any interaction, usually used for decorative images */
+    }
+
+    .card__content {
+      padding: 16px;
+    }
+
+    .card__title {
+      font-size: 18px;
+      font: bold;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .card__title::after {
+      content: attr(title);
+      position: absolute;
+      width: 140px;
+      opacity: 0;
+    }
+
+    .card__title:hover::after {
+      opacity: 1;
+      /* Show the pseudo-element on hover */
+    }
+
+    .card__text {
+      font-size: 14;
+      color: #666666;
+      margin-bottom: 16px;
+    }
+
+    .card__price {
+      font-size: 14px;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    .card__button {
+      text-decoration: none;
+      background-color: #4caf50;
+      padding: 8px 16px;
+      transition: background-color 0.3s ease;
+
+    }
+
+    .card__button:hover {
+      background-color: #45a049;
+
+    }
+
+    .card--dark {
+      background-color: #333333;
+      box-shadow: 1px 4px 8px red;
+      color: #cccccc;
+    }
+
+    .card--dark .card__button {
+      background-color: #1e2a82;
+    }
+
+    .card--dark .card__button:hover {
+      background-color: #1a6c3d;
+    }
+  </style>
+
+  <style>
+    #cards-grid {
+      display: grid;
+      height: 100vh;
+      /* display: flex;
+            flex-wrap: wrap; we shouldnot use flex box bcs it will override the grid
+            justify-content: center; */
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      /* each 280px we will move to the second column */
+      grid-gap: 20px;
+      justify-items: center;
+      align-items: center;
+    }
+
+    @media only screen and (max-width: 415px) {
+      #cards-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
       body {
-          padding: 40px;
+        background-color: red;
       }
+    }
+  </style>
+  <!-- session final -->
+  <!-- Task: reset box-sizing, margin, and padding styles on all elements -->
 
-      .card {
-        width: 300px;
-        height: 500px;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.9);
-      }
+  <!-- session final -->
+  <!-- Task: give the body of the page a padding of 40 pixels -->
 
-      .card__header {
-        display: flex;
-        justify-content: space-between;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-right: 16px;
-        padding-left: 16px;
-      }
+  <!-- session final -->
+  <!-- Task: copy the styles of card elements off the work of previous sessions -->
 
-      .card__image {
-        width: 100%;
-        height: auto; /* prevent the image ffrom streching */
-        pointer-events: none; /* to prevent any interaction, usually used for decorative images */
-      }
+  <!-- session final -->
+  <!-- Task: add styles for the element with ID 'cards-grid' -->
+  <!-- Hint: set display to grid, with columns template set to auto-fit with minmax 280px -> 1fr -->
+  <!-- Hint: add a gap of 20 pixels between the child elements -->
+  <!-- Hint: use justify-content: center; to center cards horizontally -->
+  <!-- Hint: use align-content: center; to center cards vertically -->
+</head>
 
-      .card__content {
-        padding: 16px;
-      }
-
-      .card__title {
-        font-size: 18px;
-        font: bold;
-        margin-bottom: 8px;
-        position: relative;
-      }
-
-      .card__title::after {
-        content: attr(title);
-        position: absolute;
-        width: 140px;
-        opacity: 0;
-      }
-
-      .card__title:hover::after {
-          opacity: 1; /* Show the pseudo-element on hover */
-      }
-
-      .card__text {
-        font-size: 14;
-        color: #666666;
-        margin-bottom: 16px;
-      }
-
-      .card__price {
-        font-size: 14px;
-        margin-top: 8px;
-        font-weight: bold;
-      }
-
-      .card__button {
-        text-decoration: none;
-        background-color: #4caf50;
-        padding: 8px 16px;
-        transition: background-color 0.3s ease;
-    
-      }
-
-      .card__button:hover {
-        background-color: #45a049;
-
-      }
-
-      .card--dark {
-        background-color: #333333;
-        box-shadow: 1px 4px 8px red;
-        color: #cccccc;
-      }
-
-      .card--dark .card__button {
-          background-color: #1e2a82;
-      }
-
-      .card--dark .card__button:hover {
-          background-color: #1a6c3d;
-      }
-    </style>
-
-    <style>
-        #cards-grid {
-            display: grid;
-            height: 100vh;
-            /* display: flex;
-            flex-wrap: wrap; we shouldnot use flex box bcs it will override the grid
-            justify-content: center; */
-            grid-template-columns: repeat(auto-fit,minmax(280px, 1fr));
-            /* each 280px we will move to the second column */
-            grid-gap: 20px;
-            justify-items: center;
-            align-items: center;
-                      
-            
-        }
-    </style>
-    <!-- session final -->
-    <!-- Task: reset box-sizing, margin, and padding styles on all elements -->
-      
-    <!-- session final -->
-    <!-- Task: give the body of the page a padding of 40 pixels -->
-
-    <!-- session final -->
-    <!-- Task: copy the styles of card elements off the work of previous sessions -->
-
-    <!-- session final -->
-    <!-- Task: add styles for the element with ID 'cards-grid' -->
-    <!-- Hint: set display to grid, with columns template set to auto-fit with minmax 280px -> 1fr -->
-    <!-- Hint: add a gap of 20 pixels between the child elements -->
-    <!-- Hint: use justify-content: center; to center cards horizontally -->
-    <!-- Hint: use align-content: center; to center cards vertically -->
-  </head>
-  <body>
-    <!-- <div id="cards-grid">
+<body>
+  <!-- <div id="cards-grid">
         <div class="card card--dark">
             <img src="images/download.jpg" alt="Image" class="card__image" />
             <span class="card__header">
@@ -172,23 +186,23 @@
           </div>
     </div> -->
 
-<div id="cards-grid"></div>
+  <div id="cards-grid"></div>
 
-<!-- Script to populate the 'cards-grid' element with 20 cards -->
-<script>
+  <!-- Script to populate the 'cards-grid' element with 20 cards -->
+  <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Document object model
-        // Get a reference to the container element '#cards-grid'
-        let cardsGrid = document.getElementById('cards-grid');
+      // Document object model
+      // Get a reference to the container element '#cards-grid'
+      let cardsGrid = document.getElementById('cards-grid');
 
-        // Run a loop for 20 times
-        for (let i = 0; i < 20; i++) {
-            // Create a card element
-            let card = document.createElement('div');
-            card.className = 'card card--dark';
+      // Run a loop for 20 times
+      for (let i = 0; i < 20; i++) {
+        // Create a card element
+        let card = document.createElement('div');
+        card.className = 'card card--dark';
 
-            // Structure of a card
-            card.innerHTML = `
+        // Structure of a card
+        card.innerHTML = `
                 <img src="images/download.jpg" alt="Card Image" class="card__image" />
                 <div class="card__content">
                     <h2 class="card__title" title="Card Title">Puppy</h2>
@@ -198,37 +212,38 @@
                 </div>
             `;
 
-            // Append the card to the container
-            cardsGrid.appendChild(card);
-        }
+        // Append the card to the container
+        cardsGrid.appendChild(card);
+      }
     });
 
 
-        // // definition of the function
-        // function alertHello() {
-        //     alert('hello')
-        //     console.log('user clicked the first card') // print out what just happened
-        // }
+    // // definition of the function
+    // function alertHello() {
+    //     alert('hello')
+    //     console.log('user clicked the first card') // print out what just happened
+    // }
 
-        // let card = document.querySelector('.card')
-        // card.addEventListener('click', alertHello)
-        // // console.log(card) // will appear directly when we open the concol and reference the first object it captures //
+    // let card = document.querySelector('.card')
+    // card.addEventListener('click', alertHello)
+    // // console.log(card) // will appear directly when we open the concol and reference the first object it captures //
 
 
 
-        // for(let i = 1; i < 11 ; i++){
-        //     console.log(i)
-        // }
+    // for(let i = 1; i < 11 ; i++){
+    //     console.log(i)
+    // }
 
-</script>
-    <!-- session final -->
-    <!-- Task: add a script with the logic to populate element corresponding to selector '#cards-grid' with 20 cards -->
-    <!-- Hint: you can use chatGPT if you don't know JavaScript yet
+  </script>
+  <!-- session final -->
+  <!-- Task: add a script with the logic to populate element corresponding to selector '#cards-grid' with 20 cards -->
+  <!-- Hint: you can use chatGPT if you don't know JavaScript yet
       - get a reference of the container element '#cards-grid'
       - run a loop for N times, N being the number of cards in this case, equal to 20
       - in each iteration create a card, and append it to the container element
       - a card should have the following structure: <div class="card"> <img /> <div> <h2 title="...">...</h2> <p>$...</p> <p>Description goes here...</p> <a>Read More</a> </div> </div>
       - remeber to follow BEM convention when giving each element it's class
     -->
-  </body>
+</body>
+
 </html>
