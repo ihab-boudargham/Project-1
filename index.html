@@ -7,7 +7,7 @@
 
     <style>
       * {
-          box-sizing: border-box;
+          box-sizing: border-box;  /* all calculations will be inside the box */
           margin: 0;
           padding: 0;
       }
@@ -16,81 +16,106 @@
           padding: 40px;
       }
 
-      /* Card styles */
       .card {
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          overflow: hidden;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        height: 500px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.9);
+      }
+
+      .card__header {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-right: 16px;
+        padding-left: 16px;
       }
 
       .card__image {
-          width: 100%;
-          height: auto;
-          display: block;
+        width: 100%;
+        height: auto; /* prevent the image ffrom streching */
+        pointer-events: none; /* to prevent any interaction, usually used for decorative images */
       }
 
       .card__content {
-          padding: 16px;
+        padding: 16px;
       }
 
       .card__title {
-          font-size: 18px;
-          font-weight: bold;
-          margin-bottom: 8px;
-          position: relative;
+        font-size: 18px;
+        font: bold;
+        margin-bottom: 8px;
+        position: relative;
       }
 
       .card__title::after {
-          content: attr(title);
-          position: absolute;
-          width: 140px;
-          opacity: 0;
-          background-color: #333;
-          color: #fff;
-          padding: 8px;
-          border-radius: 4px;
-          font-size: 14px;
-          transition: opacity 0.3s ease;
+        content: attr(title);
+        position: absolute;
+        width: 140px;
+        opacity: 0;
       }
 
       .card__title:hover::after {
-          opacity: 1;
-      }
-
-      .card__price {
-          font-size: 16px;
-          font-weight: bold;
-          margin-top: 8px;
+          opacity: 1; /* Show the pseudo-element on hover */
       }
 
       .card__text {
-          font-size: 14px;
-          color: #666;
-          margin-bottom: 16px;
+        font-size: 14;
+        color: #666666;
+        margin-bottom: 16px;
+      }
+
+      .card__price {
+        font-size: 14px;
+        margin-top: 8px;
+        font-weight: bold;
       }
 
       .card__button {
-          text-decoration: none;
-          background-color: #4caf50;
-          color: #fff;
-          padding: 8px 16px;
-          border-radius: 4px;
-          transition: background-color 0.3s ease;
+        text-decoration: none;
+        background-color: #4caf50;
+        padding: 8px 16px;
+        transition: background-color 0.3s ease;
+    
       }
 
       .card__button:hover {
-          background-color: #45a049;
+        background-color: #45a049;
+
       }
 
-      /* Styles for the element with ID 'cards-grid' */
-      #cards-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 20px;
-          justify-content: center;
-          align-content: center;
+      .card--dark {
+        background-color: #333333;
+        box-shadow: 1px 4px 8px red;
+        color: #cccccc;
       }
+
+      .card--dark .card__button {
+          background-color: #1e2a82;
+      }
+
+      .card--dark .card__button:hover {
+          background-color: #1a6c3d;
+      }
+    </style>
+
+    <style>
+        #cards-grid {
+            display: grid;
+            height: 100vh;
+            /* display: flex;
+            flex-wrap: wrap; we shouldnot use flex box bcs it will override the grid
+            justify-content: center; */
+            grid-template-columns: repeat(auto-fit,minmax(280px, 1fr));
+            /* each 280px we will move to the second column */
+            grid-gap: 20px;
+            justify-items: center;
+            align-items: center;
+                      
+            
+        }
     </style>
     <!-- session final -->
     <!-- Task: reset box-sizing, margin, and padding styles on all elements -->
@@ -109,31 +134,93 @@
     <!-- Hint: use align-content: center; to center cards vertically -->
   </head>
   <body>
-    <div id="cards-grid"></div>
+    <!-- <div id="cards-grid">
+        <div class="card card--dark">
+            <img src="images/download.jpg" alt="Image" class="card__image" />
+            <span class="card__header">
+              <h2 class="card__title" title="Lorem ipsum title">Card Title</h2>
+              <p class="card__price">$19.99 per month</p>
+            </span>
+            <div class="card__content">
+              <p class="card__text">Lorem.</p>
+              <a href="#" class="card__button">Read More</a>
+            </div>
+          </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-          var cardsGrid = document.getElementById('cards-grid');
-          var numberOfCards = 20;
+          <div class="card card--dark">
+            <img src="images/download.jpg" alt="Image" class="card__image" />
+            <span class="card__header">
+              <h2 class="card__title" title="Lorem ipsum title">Card Title</h2>
+              <p class="card__price">$19.99 per month</p>
+            </span>
+            <div class="card__content">
+              <p class="card__text">Lorem.</p>
+              <a href="#" class="card__button">Read More</a>
+            </div>
+          </div>
 
-          for (var i = 0; i < numberOfCards; i++) {
-              var card = document.createElement('div');
-              card.className = 'card';
+          <div class="card card--dark">
+            <img src="images/download.jpg" alt="Image" class="card__image" />
+            <span class="card__header">
+              <h2 class="card__title" title="Lorem ipsum title">Card Title</h2>
+              <p class="card__price">$19.99 per month</p>
+            </span>
+            <div class="card__content">
+              <p class="card__text">Lorem.</p>
+              <a href="#" class="card__button">Read More</a>
+            </div>
+          </div>
+    </div> -->
 
-              card.innerHTML = `
-                  <img src="images/download.jpg" alt="Card Image" class="card__image" />
-                  <div class="card__content">
-                      <h2 class="card__title" title="Card Title">Card Title</h2>
-                      <p class="card__price">$...</p>
-                      <p class="card__text">Description goes here...</p>
-                      <a href="#" class="card__button">Read More</a>
-                  </div>
-              `;
+<div id="cards-grid"></div>
 
-              cardsGrid.appendChild(card);
-          }
-      });
-  </script>
+<!-- Script to populate the 'cards-grid' element with 20 cards -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Document object model
+        // Get a reference to the container element '#cards-grid'
+        let cardsGrid = document.getElementById('cards-grid');
+
+        // Run a loop for 20 times
+        for (let i = 0; i < 20; i++) {
+            // Create a card element
+            let card = document.createElement('div');
+            card.className = 'card card--dark';
+
+            // Structure of a card
+            card.innerHTML = `
+                <img src="images/download.jpg" alt="Card Image" class="card__image" />
+                <div class="card__content">
+                    <h2 class="card__title" title="Card Title">Puppy</h2>
+                    <p class="card__price">$200</p>
+                    <p class="card__text"> Description </p>
+                    <a href="#" class="card__button">Read More</a>
+                </div>
+            `;
+
+            // Append the card to the container
+            cardsGrid.appendChild(card);
+        }
+    });
+
+
+        // // definition of the function
+        // function alertHello() {
+        //     alert('hello')
+        //     console.log('user clicked the first card') // print out what just happened
+        // }
+
+        // let card = document.querySelector('.card')
+        // card.addEventListener('click', alertHello)
+        // // console.log(card) // will appear directly when we open the concol and reference the first object it captures //
+
+
+
+        // for(let i = 1; i < 11 ; i++){
+        //     console.log(i)
+        // }
+
+</script>
     <!-- session final -->
     <!-- Task: add a script with the logic to populate element corresponding to selector '#cards-grid' with 20 cards -->
     <!-- Hint: you can use chatGPT if you don't know JavaScript yet
